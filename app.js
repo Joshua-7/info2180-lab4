@@ -15,7 +15,7 @@
                 fetch("http://localhost/info2180-lab4/superheroes.php?q="+name)
                 .then(response => response.text())
                 .then(data => {
-                  $("#result").html(data);
+                  $("#result h3").html(data);
                 })
                 .catch(error => {
                 console.log(error);
@@ -29,7 +29,7 @@
                 .then(data => {
                 let chara = JSON.parse(data);
                 console.log(chara);
-                $("h3").html(chara['alias']);
+                $("#result h3").html(chara['alias']);
                 $("h4").html(chara['name']);
                 $("p").html(chara['biography']);
                })

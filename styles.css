@@ -1,0 +1,59 @@
+header
+{
+    background-color: #F0131E;
+    color:  white;
+    text-align: center;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+body
+{
+   background-image: url("wp5511233-avengers-for-computer-wallpapers.jpg");
+   margin: 0;
+}
+form
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.btn
+{
+    margin-left: 1px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: #F0131E;
+    border-color:  #F0131E;
+    border-style: solid;
+    color: white;
+}
+input
+{
+   width: 1250px;
+   height: 40px;
+   border-radius: 5px;
+   border-color: white;
+   border-style: solid;
+}
+
+.insttxxt
+{
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    padding-left: 30px;
+}
+
+results
+{
+    color: white;
+}
+
+.resul
+{
+    padding-left: 30px;
+}

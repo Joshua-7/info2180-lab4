@@ -68,7 +68,12 @@ $superheroes = [
 ?>
 
 <?php
-    $nme = $_GET['q'];
+    $ne = htmlentities($_GET['q'], ENT_QUOTES, 'UTF-8');
+    $nme = filter_var($ne, FILTER_SANITIZE_STRING);
+    $notfound = ["id" => 999,
+    "name" => "",
+    "alias" => "Superhero not found",
+    "biography" =>"" ];
     foreach($superheroes as $inner)
     {
         if (in_array($nme,$inner))
@@ -85,4 +90,15 @@ $superheroes = [
         <li><?= $superhero['alias']; ?></li>
         <?php endforeach; ?>
         </ul>
-    <?php endif;?>    
+    <?php endif;?>  
+    
+<?php
+    $ad = 0;
+    foreach($superheroes as $inner)
+        if ((in_array($nme,$inner))== false && ($nme !== ""))
+         $ad++;
+    if ($ad == 10)
+    {
+        echo json_encode($notfound);
+    } 
+?>    
