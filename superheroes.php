@@ -1,6 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
+header('Content-type: application/json');
 $superheroes = [
   [
       "id" => 1,
@@ -66,8 +67,22 @@ $superheroes = [
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+<?php
+    $nme = $_GET['q'];
+    foreach($superheroes as $inner)
+    {
+        if (in_array($nme,$inner))
+        {
+            echo json_encode($inner);
+        }
+    }
+?>
+
+<?php
+    if ($nme == ""): ?>
+        <ul>
+        <?php foreach ($superheroes as $superhero): ?>
+        <li><?= $superhero['alias']; ?></li>
+        <?php endforeach; ?>
+        </ul>
+    <?php endif;?>    

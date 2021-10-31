@@ -6,17 +6,38 @@
       {
         $(document).ready(function()
         {
-            $(".btn").click(function()
+            $(".btn").click(function(ev)
             {
-
-              fetch("http://localhost/info2180-lab4/superheroes.php")
-              .then(response => response.text())
-              .then(data => {
-              alert(data);
-              })
-              .catch(error => {
-              console.log(error);
-              });
+              let name = $("#avenger").val();
+              if(name == "")
+              {
+                ev.preventDefault();
+                fetch("http://localhost/info2180-lab4/superheroes.php?q="+name)
+                .then(response => response.text())
+                .then(data => {
+                  $("#result").html(data);
+                })
+                .catch(error => {
+                console.log(error);
+                });
+              }
+              else
+              {
+                ev.preventDefault();
+                fetch("http://localhost/info2180-lab4/superheroes.php?q="+name)
+                .then(response => response.text())
+                .then(data => {
+                let chara = JSON.parse(data);
+                console.log(chara);
+                $("h3").html(chara['alias']);
+                $("h4").html(chara['name']);
+                $("p").html(chara['biography']);
+               })
+                .catch(error => {
+               console.log(error);
+                });
+              }
+              
             });  
         });
       }
